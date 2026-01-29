@@ -4,26 +4,16 @@ import 'package:meals_app_flutter_course/models/meal.dart';
 import 'package:meals_app_flutter_course/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({
-    super.key,
-    this.title,
-    required this.meals,
-    required this.onToggleFavorite,
-  });
+  const MealsScreen({super.key, this.title, required this.meals});
   final String? title;
   final List<Meal> meals;
-  final void Function(Meal meal) onToggleFavorite;
+
   @override
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
       itemCount: meals.length,
       itemBuilder: (context, index) {
-        return MealItem(
-          meal: meals[index],
-          onToggleFavorites: (Meal meal) {
-            onToggleFavorite(meal);
-          },
-        );
+        return MealItem(meal: meals[index]);
       },
     );
     if (meals.isEmpty) {

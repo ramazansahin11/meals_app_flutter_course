@@ -6,13 +6,9 @@ import 'package:meals_app_flutter_course/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({
-    super.key,
-    required this.meal,
-    required this.onToggleFavorites,
-  });
+  const MealItem({super.key, required this.meal});
   final Meal meal;
-  final void Function(Meal meal) onToggleFavorites;
+
   String get complexityText {
     return meal.complexity.name[0].toLowerCase() +
         meal.complexity.name.substring(1); //'Hello' + 'World' => 'HelloWorld'
@@ -39,12 +35,7 @@ class MealItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MealDetailScreen(
-                meal: meal,
-                onToggleFavorite: (Meal meal) {
-                  onToggleFavorites(meal);
-                },
-              ),
+              builder: (context) => MealDetailScreen(meal: meal),
             ),
           );
         },
